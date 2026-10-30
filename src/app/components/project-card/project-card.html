@@ -1,0 +1,27 @@
+<article class="card">
+  @if (project().image) {
+    <img class="card__img" [src]="project().image" [alt]="'Capture de ' + project().title" />
+  } @else {
+    <div class="card__img card__img--empty">[capture d'écran]</div>
+  }
+
+  <h3>{{ project().title }}</h3>
+
+  <p class="card__desc">
+    <strong>Problème :</strong> {{ project().problem }}
+    <strong>Solution :</strong> {{ project().solution }}
+  </p>
+
+  <p class="card__metric">{{ project().metric }}</p>
+
+  <ul class="tags">
+    @for (tag of project().tags; track tag) {
+      <li>{{ tag }}</li>
+    }
+  </ul>
+
+  <div class="card__links">
+    <a class="link" [href]="project().demoUrl" target="_blank" rel="noopener">Démo live ↗</a>
+    <a class="link" [href]="project().codeUrl" target="_blank" rel="noopener">Code source ↗</a>
+  </div>
+</article>

@@ -1,0 +1,12 @@
+<section id="stack" class="section container">
+  <h2 class="section__title">Stack & compétences</h2>
+
+  <div class="skills">
+    @for (g of groups; track g.title) {
+      <div class="skills__col">
+        <h3>{{ g.title }}</h3>
+        <p>{{ g.items }}</p>
+      </div>
+    }
+  </div>
+</section>

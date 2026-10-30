@@ -1,0 +1,18 @@
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 40px;
+  background: var(--dark);
+  color: #fff;
+  border-radius: 18px;
+}
+h2 { font-size: 1.8rem; font-weight: 800; }
+p { margin-top: 6px; color: #cbd5e1; }
+
+.contact__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.btn--accent { background: #7dd3b8; color: var(--dark); }
+.btn--ghost { border-color: #6b7280; color: #fff; }

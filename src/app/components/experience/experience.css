@@ -1,0 +1,20 @@
+.timeline { margin-top: 24px; }
+.timeline__row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+.timeline__row:last-child { border-bottom: 1px solid var(--border); }
+.timeline__date {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+h3 { font-size: 1rem; margin-bottom: 6px; }
+p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .timeline__row { grid-template-columns: 1fr; gap: 6px; }
+}

@@ -1,0 +1,12 @@
+<section id="projets" class="section container">
+  <div class="section__head">
+    <h2 class="section__title">Projets phares</h2>
+    <a class="link" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">Tout voir sur GitHub →</a>
+  </div>
+
+  <div class="grid">
+    @for (p of projects; track p.title) {
+      <app-project-card [project]="p" />
+    }
+  </div>
+</section>

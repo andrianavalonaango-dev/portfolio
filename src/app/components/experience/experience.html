@@ -1,0 +1,15 @@
+<section id="parcours" class="section container">
+  <h2 class="section__title">Parcours</h2>
+
+  <div class="timeline">
+    @for (s of steps; track s.period) {
+      <div class="timeline__row">
+        <span class="timeline__date">{{ s.period }}</span>
+        <div>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>
