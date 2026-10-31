@@ -1,12 +1,25 @@
 <section id="projets" class="section container">
   <div class="section__head">
     <h2 class="section__title">Projets phares</h2>
-    <a class="link" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">Tout voir sur GitHub →</a>
+    <a class="link" href="https://github.com/andrianavalonaango-dev" target="_blank" rel="noopener">Tout voir sur GitHub →</a>
   </div>
 
-  <div class="grid">
-    @for (p of projects; track p.title) {
-      <app-project-card [project]="p" />
-    }
-  </div>
+  @if (loading()) {
+    <p class="state">Chargement des projets…</p>
+  } @else if (error()) {
+    <p class="state">Impossible de charger les projets pour le moment.</p>
+  } @else {
+    <div class="filters">
+      @for (t of tags(); track t) {
+        <button type="button" class="chip" [class.active]="selected() === t"
+                (click)="selected.set(t)">{{ t }}</button>
+      }
+    </div>
+
+    <div class="grid">
+      @for (p of filtered(); track p.title) {
+        <app-project-card [project]="p" />
+      }
+    </div>
+  }
 </section>

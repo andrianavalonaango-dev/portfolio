@@ -8,7 +8,7 @@ export default [
     codeUrl: 'https://github.com/andrianavalonaango-dev/gestion-de-parking.git'
   },
   {
-    title: 'Nom du projet 2',
+    title: 'Nom du projet 4',
     problem: 'une phrase sur le besoin.',
     solution: 'ton rôle et tes choix techniques.',
     metric: 'API REST de 12 routes',

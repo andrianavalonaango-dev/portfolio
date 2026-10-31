@@ -19,3 +19,7 @@
   border-color: var(--accent);
   color: var(--on-accent);
 }
+.state {
+  color: var(--muted);
+  padding: 24px 0;
+}
