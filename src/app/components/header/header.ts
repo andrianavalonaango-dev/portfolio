@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { Theme } from '../../services/theme';
 
 @Component({
-  imports: [],
   selector: 'app-header',
-  styleUrl: './header.css',
   templateUrl: './header.html',
+  styleUrl: './header.css'
 })
-export class Header {}
+export class Header {
+  theme = inject(Theme);
+  menuOpen = signal(false);
+
+  toggle() { this.menuOpen.update(v => !v); }
+  close() { this.menuOpen.set(false); }
+}

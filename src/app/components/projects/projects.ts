@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { ProjectCard } from '../project-card/project-card';
 import { Project } from '../../models/project.model';
 
@@ -18,7 +18,7 @@ export class Projects {
       metric: '4 pages, 100 % responsive',
       tags: ['Angular', 'Node.js', 'MongoDB'],
       demoUrl: '#',
-      codeUrl: 'https://github.com/ton-pseudo/projet1'
+      codeUrl: 'https://github.com/andrianavalonaango-dev/projet1'
     },
     {
       title: 'Nom du projet 2',
@@ -27,7 +27,7 @@ export class Projects {
       metric: 'API REST de 12 routes',
       tags: ['Express', 'JavaScript', 'MySQL'],
       demoUrl: '#',
-      codeUrl: 'https://github.com/ton-pseudo/projet2'
+      codeUrl: 'https://github.com/andrianavalonaango-dev/projet2'
     },
     {
       title: 'Nom du projet 3',
@@ -36,7 +36,17 @@ export class Projects {
       metric: 'Projet d\'équipe de 4 personnes',
       tags: ['HTML', 'CSS', 'JavaScript'],
       demoUrl: '#',
-      codeUrl: 'https://github.com/ton-pseudo/projet3'
+      codeUrl: 'https://github.com/andrianavalonaango-dev/projet3'
     }
   ];
+
+  selected = signal('Tous');
+
+  tags = computed(() => ['Tous', ...new Set(this.projects.flatMap(p => p.tags))]);
+
+  filtered = computed(() =>
+    this.selected() === 'Tous'
+      ? this.projects
+      : this.projects.filter(p => p.tags.includes(this.selected()))
+  );
 }
