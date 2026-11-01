@@ -1,9 +1,41 @@
 <article class="card">
-  @if (project().image) {
-    <img class="card__img" [src]="project().image" [alt]="'Capture de ' + project().title" />
-  } @else {
-    <div class="card__img card__img--empty">[capture d'écran]</div>
-  }
+  <div class="gallery">
+    @if (current()) {
+      <img
+        class="card__img"
+        [src]="current()"
+        [alt]="'Capture ' + (index() + 1) + ' de ' + project().title"
+      />
+
+      @if (images().length > 1) {
+        <button
+          type="button"
+          class="arrow arrow--prev"
+          (click)="prev()"
+          aria-label="Image précédente"
+        >
+          ‹
+        </button>
+
+        <button
+          type="button"
+          class="arrow arrow--next"
+          (click)="next()"
+          aria-label="Image suivante"
+        >
+          ›
+        </button>
+
+        <span class="counter">
+          {{ index() + 1 }} / {{ images().length }}
+        </span>
+      }
+    } @else {
+      <div class="card__img card__img--empty">
+        Aucune capture disponible
+      </div>
+    }
+  </div>
 
   <h3>{{ project().title }}</h3>
 
@@ -21,7 +53,24 @@
   </ul>
 
   <div class="card__links">
-    <a class="link" [href]="project().demoUrl" target="_blank" rel="noopener">Démo live ↗</a>
-    <a class="link" [href]="project().codeUrl" target="_blank" rel="noopener">Code source ↗</a>
+    @if (project().demoUrl && project().demoUrl !== '#') {
+      <a
+        class="link"
+        [href]="project().demoUrl"
+        target="_blank"
+        rel="noopener"
+      >
+        Démo live ↗
+      </a>
+    }
+
+    <a
+      class="link"
+      [href]="project().codeUrl"
+      target="_blank"
+      rel="noopener"
+    >
+      Code source ↗
+    </a>
   </div>
 </article>

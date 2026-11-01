@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { Project } from '../../models/project.model';
 
 @Component({
@@ -8,4 +8,23 @@ import { Project } from '../../models/project.model';
 })
 export class ProjectCard {
   project = input.required<Project>();
+  index = signal(0);
+
+  images = computed(() => this.project().images ?? []);
+
+  current = computed(() => this.images()[this.index()] ?? null);
+
+  next() {
+    const length = this.images().length;
+    if (length > 0) {
+      this.index.update(i => (i + 1) % length);
+    }
+  }
+
+  prev() {
+    const length = this.images().length;
+    if (length > 0) {
+      this.index.update(i => (i - 1 + length) % length);
+    }
+  }
 }

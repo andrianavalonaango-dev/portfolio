@@ -71,3 +71,34 @@ h3 { font-size: 1.1rem; margin-top: 4px; }
   text-decoration: none;
 }
 .link:hover { text-decoration: underline; }
+
+.gallery { position: relative; }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.arrow--prev { left: 8px; }
+.arrow--next { right: 8px; }
+
+.counter {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
