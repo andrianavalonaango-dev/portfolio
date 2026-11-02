@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class Skills {
   groups = [
-    { title: 'Front-end', items: 'Angular, TypeScript, HTML, CSS, JavaScript' },
-    { title: 'Back-end & données', items: 'Node.js, Express, API REST, MySQL' },
-    { title: 'Outils & qualité', items: 'Git, GitHub, VS Code, tests, déploiement' }
+    { title: 'Front-end', items: 'Angular,React,Vue js,TypeScript, HTML, CSS, JavaScript' },
+    { title: 'Back-end & données', items: 'Node.js, Nestjs, API REST, MySQL' },
+    { title: 'Outils & qualité', items: 'Git, GitHub, VS Code'},
   ];
 }
