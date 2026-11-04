@@ -1,59 +1,81 @@
 # Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.5.
+Portfolio personnel réalisé avec Angular. Il présente mon parcours, mes compétences et mes projets. L'application utilise une API Express distincte pour récupérer les informations des projets.
 
-## Development server
+## Fonctionnalités
 
-To start a local development server, run:
+- Présentation et parcours
+- Compétences techniques
+- Liste de projets avec descriptions, technologies et captures d'écran
+- Thème clair/sombre mémorisé dans le navigateur
+- Liens de contact, GitHub et LinkedIn
+- API Express avec une route de vérification et une route de consultation des projets
 
-```bash
-ng serve
-```
+## Technologies
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Interface :** Angular 22, TypeScript, HTML et CSS
+- **API :** Node.js, Express 5 et CORS
+- **Tests :** Vitest via Angular CLI
 
-## Code scaffolding
+## Prérequis
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js et npm
 
-```bash
-ng generate component component-name
-```
+## Installation et lancement en local
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+L'interface et l'API se lancent dans deux terminaux distincts.
 
-```bash
-ng generate --help
-```
+### 1. Démarrer l'API
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Depuis la racine du projet :
 
 ```bash
-ng test
+cd server
+npm install
+npm run dev
 ```
 
-## Running end-to-end tests
+Le serveur démarre sur `http://localhost:3000`. Il redémarre automatiquement lorsque ses fichiers changent.
 
-For end-to-end (e2e) testing, run:
+### 2. Démarrer l'interface
+
+Dans un autre terminal, depuis la racine du projet :
 
 ```bash
-ng e2e
+npm install
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Ouvrir ensuite `http://localhost:4200`. En développement, Angular utilise l'URL de l'API locale (`http://localhost:3000/api`).
 
-## Additional Resources
+## API
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| Méthode | Route | Description |
+| --- | --- | --- |
+| `GET` | `/api/health` | Vérifie que l'API est disponible |
+| `GET` | `/api/projects` | Renvoie la liste des projets |
+
+Les données des projets sont définies dans [`server/data/projects.js`](server/data/projects.js). Les images et autres fichiers publics de l'interface se trouvent dans [`public/`](public/).
+
+## Configuration
+
+- L'URL utilisée par l'interface est définie dans [`src/environments/environment.ts`](src/environments/environment.ts) pour la production et [`src/environments/environment.development.ts`](src/environments/environment.development.ts) pour le développement local.
+- L'API écoute le port `3000` par défaut. La variable d'environnement `PORT` permet de le modifier.
+- Pour autoriser un domaine de l'interface autre que `http://localhost:4200`, définir `FRONTEND_URL` côté serveur.
+- Sur Vercel, la variable `VERCEL` empêche le serveur d'ouvrir son propre port : la plateforme prend en charge le démarrage de l'application.
+
+## Commandes utiles
+
+Depuis la racine du projet :
+
+```bash
+npm start       # Lance le serveur de développement Angular
+npm run build   # Génère la version de production dans dist/
+npm test        # Lance les tests Angular
+```
+
+Depuis le dossier `server/` :
+
+```bash
+npm run dev     # Lance l'API avec redémarrage automatique
+```
